@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../shared/services/auth.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { User } from './../../../shared/models/user'
+import { User } from './../../../shared/models/user';
 
 @Component({
   selector: 'app-register',
@@ -12,9 +11,21 @@ import { User } from './../../../shared/models/user'
 })
 export class RegisterComponent implements OnInit {
 
-	private user: User;
+	public user = new User();
   constructor(private authService: AuthService, private router: Router) { }
 
+  sb()
+  {
+  	this.authService.submit(this.user)
+  		.subscribe(
+  			() => {
+  				this.router.navigateByUrl('/');
+  			},
+		    (err: HttpErrorResponse) => {
+		    	alert(`${err.error.error}`);
+		    }
+  		);
+  }
   ngOnInit() {
   }
 

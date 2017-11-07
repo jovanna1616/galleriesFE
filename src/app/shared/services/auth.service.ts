@@ -7,6 +7,67 @@ import { User } from './../models/user';
 @Injectable()
 export class AuthService {
 	user: User;
-  constructor(private httpClient: HttpClient ) { }
+	public isAuthenticated: boolean;
 
+  constructor(private http: HttpClient ) {
+  	this.isAuthenticated = !!window.localStorage.getItem('loginToken');
+ }
+
+  submit(user) {
+  	return new Observable((o: Observer<any>) => {
+    	this.http.post('http://localhost:8000/api/register', {
+  			firstName: user.firstName,
+			  lastName: user.lastName,
+			  email: user.email,
+			  password: user.password,
+			  accepted_terms: user.accepted_terms
+  	  	})
+        .subscribe(
+          (data: {token: string}) => {
+          	window.localStorage.setItem('loginToken', data.token);
+          	this.isAuthenticated = true;
+
+            o.next(data.token);
+            return o.complete();
+          },
+          (err) => {
+          	// samo proslediti
+          	return o.error(err);
+          }
+        );
+    });
+  }
+
+  public login(email: string, password: string)
+  {
+  	return new Observable((o: Observer<any>) => {
+    	this.http.post('http://localhost:8000/api/login', {
+  			'email': email,
+  			'password': password
+  	  	})
+	        .subscribe(
+	          (data: {token: string}) => {
+	          	window.localStorage.setItem('loginToken', data.token);
+	          	this.isAuthenticated = true;
+
+	            o.next(data.token);
+	            return o.complete();
+	          },
+	          (err) => {
+	          	return o.error(err);
+	          }
+	        );
+    });
+  }
+
+  public getRequestHeaders()
+  {
+  	return new HttpHeaders().set('Authorization', 'Bearer ' + window.localStorage.getItem('loginToken'));
+  }
+
+  public logout()
+  {
+  	window.localStorage.removeItem('loginToken');
+  	this.isAuthenticated = false;	
+  }
 }

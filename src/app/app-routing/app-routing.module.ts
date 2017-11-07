@@ -7,19 +7,29 @@ import { RegisterComponent } from './../components/auth/register/register.compon
 import { AllGalleriesComponent } from './../components/all-galleries/all-galleries.component';
 import { MyGalleriesComponent } from './../components/my-galleries/my-galleries.component';
 import { CreateNewGalleryComponent } from './../components/create-new-gallery/create-new-gallery.component';
+import { GuestGuard } from '../shared/guards/guest.guard';
+import { AuthGuard } from '../shared/guards/auth.guard';
 
 const appRoutes: Routes = [
   {
     path: '',
-    component: AllGalleriesComponent
+    redirectTo: 'all-galleries',
+    pathMatch: 'full'
   },
   {
     path: 'login',
+    canActivate: [GuestGuard],
     component: LoginComponent
   },
   {
     path: 'register',
+    canActivate: [GuestGuard],
     component: RegisterComponent
+  },
+  {
+    path: 'all-galleries',
+    canActivate: [AuthGuard],
+    component: AllGalleriesComponent
   }
 ];
 
