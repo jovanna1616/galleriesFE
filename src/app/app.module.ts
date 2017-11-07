@@ -1,14 +1,23 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
+import { SharedModule } from './shared/shared.module';
+
 import { AppComponent } from './app.component';
+import { LayoutComponent } from './components/layout/layout.component';
+import { LoginComponent } from './components/auth/login/login.component';
+import { RegisterComponent } from './components/auth/register/register.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LayoutComponent,
+    LoginComponent,
+    RegisterComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    SharedModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
