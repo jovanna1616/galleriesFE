@@ -1,3 +1,113 @@
-<p>
-  register works!
-</p>
+<h1 class="form-signin-heading">Register</h1>
+<form #registerForm="ngForm" class="form-signin" (ngSubmit)="submit(user); registerForm.reset()">
+    <div class="form-group">
+	    <label for="firstName" class="sr-only">Enter Your first name</label>
+	    <input 
+	    	type="text" 
+	    	id="inputFirstName" 
+	    	class="form-control" 
+	    	placeholder="First Name" 
+	    	name="firstName"
+	    	[(ngModel)]="user.firstName"
+	    	#firstName="ngModel"
+	    	required>
+    	<div *ngIf="firstName.invalid && (firstName.dirty || firstName.touched)" class="alert alert-danger">
+            <div *ngIf="firstName.errors.required">
+                First name is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+	    <label for="lastName" class="sr-only">Enter Your last name</label>
+	    <input 
+	    	type="text" 
+	    	id="inputLastName" 
+	    	class="form-control" 
+	    	placeholder="Last Name" 
+	    	name="lastName"
+	    	[(ngModel)]="user.lastName"
+	    	#lastName
+	    	required>
+    	<div *ngIf="lastName.invalid && (lastName.dirty || lastName.touched)" class="alert alert-danger">
+            <div *ngIf="lastName.errors.required">
+                Last name is required.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+	    <label for="inputEmail" class="sr-only">Email address</label>
+	    <input 
+	    	type="email" 
+	    	class="form-control" 
+	    	placeholder="Email address" 
+	    	name="email"
+	    	[(ngModel)]="user.email"
+	    	#email
+	    	required>
+    	<div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert alert-danger">
+            <div *ngIf="email.errors.required">
+                Email is required.
+            </div>  
+        </div>
+    </div>
+
+    <div class="form-group">
+	    <label for="inputPassword" class="sr-only">Password</label>
+	    <input 
+	    	type="password" 
+	    	class="form-control" 
+	    	placeholder="Password" 
+	    	name="password"
+	    	[(ngModel)]="user.password"
+	    	#password
+	    	required minlength="8">
+    	<div *ngIf="password.invalid && (password.dirty || password.touched)" class="alert alert-danger">
+            <div *ngIf="password.errors.required">
+                Password is required.
+            </div>
+            <div *ngIf="password.errors.minlength">
+                Password must be at least 8 characters long and contain at least one digit.
+            </div>
+        </div>
+	</div>
+
+    <div class="form-group">
+        <label for="inputPasswordConfirm" class="sr-only">Confirm password</label>
+        <input 
+            type="password" 
+            class="form-control" 
+            placeholder="Confirm Your password" 
+            name="passwordConfirm"
+            [(ngModel)]="user.passwordConfirm"
+            #passwordConfirm
+            required minlength="8">
+        <div *ngIf="passwordConfirm !== password && (passwordConfirm.dirty || passwordConfirm.touched)" class="alert alert-danger">
+            <div *ngIf="passwordConfirm.errors.required">
+                Confirmation is required.
+            </div>
+            <div *ngIf="passwordConfirm.errors.minlength">
+                Password must be at least 8 characters long and contain at least one digit.
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+    	<label>I accept terms and conditions:</label>
+    	<input 
+    		type="checkbox" 
+    		name="acceptedTerms"
+    		[(ngModel)]="user.acceptedTerms"
+    		#acceptedTerms
+    		value="false" 
+    		class="form-control">
+			Yes
+    </div>
+    <button 
+    	[disabled]="!registerForm.valid" 
+    	class="btn btn-lg btn-primary btn-block" 
+    	type="submit">
+    	Register
+    </button>
+</form>
