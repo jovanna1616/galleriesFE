@@ -12,15 +12,20 @@ export class AuthService {
   constructor(private http: HttpClient ) {
   	this.isAuthenticated = !!window.localStorage.getItem('loginToken');
  }
+  public getRequestHeaders()
+    {
+      return new HttpHeaders().set('Authorization', 'Bearer ' + window.localStorage.getItem('loginToken'));
+    }
 
-  submit(user) {
+  register(user) {
   	return new Observable((o: Observer<any>) => {
     	this.http.post('http://localhost:8000/api/register', {
-  			firstName: user.firstName,
-			  lastName: user.lastName,
+  			first_name: user.firstName,
+			  last_name: user.lastName,
 			  email: user.email,
 			  password: user.password,
-			  accepted_terms: user.accepted_terms
+        password_confirmation: user.passwordConfirm,
+			  accepted_terms: user.acceptedTerms
   	  	})
         .subscribe(
           (data: {token: string}) => {
@@ -58,11 +63,6 @@ export class AuthService {
 	          }
 	        );
     });
-  }
-
-  public getRequestHeaders()
-  {
-  	return new HttpHeaders().set('Authorization', 'Bearer ' + window.localStorage.getItem('loginToken'));
   }
 
   public logout()

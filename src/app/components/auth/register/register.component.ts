@@ -10,13 +10,12 @@ import { User } from './../../../shared/models/user';
   styleUrls: ['./register.component.css']
 })
 export class RegisterComponent implements OnInit {
-
 	public user = new User();
   constructor(private authService: AuthService, private router: Router) { }
 
-  sb()
+  registerUser()
   {
-  	this.authService.submit(this.user)
+  	this.authService.register(this.user)
   		.subscribe(
   			() => {
   				this.router.navigateByUrl('/');

@@ -27,10 +27,10 @@ import { CreateNewGalleryComponent } from './components/create-new-gallery/creat
     BrowserModule,
     SharedModule,
     AppRoutingModule,
-    FormsModule,
+    FormsModule
   ],
   exports: [
-    LayoutComponent,
+    LayoutComponent
   ],
   providers: [],
   bootstrap: [AppComponent]
