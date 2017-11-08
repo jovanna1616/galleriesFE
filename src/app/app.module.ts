@@ -12,6 +12,8 @@ import { RegisterComponent } from './components/auth/register/register.component
 import { AllGalleriesComponent } from './components/all-galleries/all-galleries.component';
 import { MyGalleriesComponent } from './components/my-galleries/my-galleries.component';
 import { CreateNewGalleryComponent } from './components/create-new-gallery/create-new-gallery.component';
+import { CustomFormsModule } from 'ng2-validation';
+
 
 @NgModule({
   declarations: [
@@ -27,7 +29,8 @@ import { CreateNewGalleryComponent } from './components/create-new-gallery/creat
     BrowserModule,
     SharedModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    CustomFormsModule
   ],
   exports: [
     LayoutComponent
