@@ -13,6 +13,7 @@ import { AllGalleriesComponent } from './components/all-galleries/all-galleries.
 import { MyGalleriesComponent } from './components/my-galleries/my-galleries.component';
 import { CreateNewGalleryComponent } from './components/create-new-gallery/create-new-gallery.component';
 import { CustomFormsModule } from 'ng2-validation';
+import { GalleriesService } from './shared/services/galleries.service';
 
 
 @NgModule({
@@ -35,7 +36,7 @@ import { CustomFormsModule } from 'ng2-validation';
   exports: [
     LayoutComponent
   ],
-  providers: [],
+  providers: [GalleriesService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
