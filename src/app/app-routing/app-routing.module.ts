@@ -28,7 +28,7 @@ const appRoutes: Routes = [
   },
   {
     path: 'all-galleries',
-    canActivate: [AuthGuard],
+    // canActivate: [AuthGuard],
     component: AllGalleriesComponent
   }
 ];
