@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { SharedModule } from './shared/shared.module';
 import { AppRoutingModule } from './app-routing/app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 import { AppComponent } from './app.component';
 import { LayoutComponent } from './components/layout/layout.component';
@@ -14,6 +15,10 @@ import { MyGalleriesComponent } from './components/my-galleries/my-galleries.com
 import { CreateNewGalleryComponent } from './components/create-new-gallery/create-new-gallery.component';
 import { CustomFormsModule } from 'ng2-validation';
 import { GalleriesService } from './shared/services/galleries.service';
+import { EditGalleryComponent } from './components/edit-gallery/edit-gallery.component';
+import { AuthorComponent } from './components/author/author.component';
+import { SingleGalleryComponent } from './components/single-gallery/single-gallery.component';
+import { GalleryRowComponent } from './components/gallery-row/gallery-row.component';
 
 
 @NgModule({
@@ -24,14 +29,19 @@ import { GalleriesService } from './shared/services/galleries.service';
     RegisterComponent,
     AllGalleriesComponent,
     MyGalleriesComponent,
-    CreateNewGalleryComponent
+    CreateNewGalleryComponent,
+    EditGalleryComponent,
+    AuthorComponent,
+    SingleGalleryComponent,
+    GalleryRowComponent
   ],
   imports: [
     BrowserModule,
     SharedModule,
     AppRoutingModule,
     FormsModule,
-    CustomFormsModule
+    CustomFormsModule,
+    NgxPaginationModule
   ],
   exports: [
     LayoutComponent

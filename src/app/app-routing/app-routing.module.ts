@@ -7,6 +7,7 @@ import { RegisterComponent } from './../components/auth/register/register.compon
 import { AllGalleriesComponent } from './../components/all-galleries/all-galleries.component';
 import { MyGalleriesComponent } from './../components/my-galleries/my-galleries.component';
 import { CreateNewGalleryComponent } from './../components/create-new-gallery/create-new-gallery.component';
+import { EditGalleryComponent } from './../components/edit-gallery/edit-gallery.component';
 import { GuestGuard } from '../shared/guards/guest.guard';
 import { AuthGuard } from '../shared/guards/auth.guard';
 
@@ -28,8 +29,22 @@ const appRoutes: Routes = [
   },
   {
     path: 'all-galleries',
-    // canActivate: [AuthGuard],
     component: AllGalleriesComponent
+  },
+  {
+    path: 'my-galleries',
+    canActivate: [AuthGuard],
+    component: MyGalleriesComponent
+  },
+  {
+    path: 'create-new-gallery',
+    canActivate: [AuthGuard],
+    component: CreateNewGalleryComponent
+  },
+  {
+    path: 'edit-gallery/:id',
+    canActivate: [AuthGuard],
+    component: EditGalleryComponent,
   }
 ];
 

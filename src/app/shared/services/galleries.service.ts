@@ -3,10 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, Observer } from 'rxjs';
 import { HttpHeaders } from '@angular/common/http';
 import { Gallery } from './../models/gallery';
+import 'rxjs/Rx';
+
+import { User } from './../models/user';
 
 @Injectable()
 export class GalleriesService {
 	private galleries: Array<Gallery> = [];
+  private user: Array<User> = [];
 
   constructor(private http: HttpClient) { }
 
@@ -19,7 +23,10 @@ export class GalleriesService {
             this.galleries.push(new Gallery(
               g.id,
               g.name,
-              g.description
+              g.description,
+              g.userId,
+              g.createdAt,
+              g.updatedAt,
             ));
           });
         });
@@ -27,5 +34,4 @@ export class GalleriesService {
           return o.complete();
         });
     }
-
 }
