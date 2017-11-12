@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from './../../shared/models/user';
+import { GalleriesService } from './../../shared/services/galleries.service';
 
 @Component({
   selector: 'app-author',
@@ -6,8 +8,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./author.component.css']
 })
 export class AuthorComponent implements OnInit {
-
-  constructor() { }
+	public user: User;
+  constructor(private galleriesService: GalleriesService) { }
 
   ngOnInit() {
   }

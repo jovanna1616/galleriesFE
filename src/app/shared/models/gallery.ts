@@ -5,6 +5,9 @@ export class Gallery {
 	    public description?: string,
 	    public userId?: number,
 	    public createdAt?: string,
-	    public updatedAt?: string
+	    public updatedAt?: string,
+	    public userFirstName?: string,
+	    public userLastName?: string,
+	    public images?: Array<string>
 	) { }
 }

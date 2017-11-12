@@ -1,4 +1,4 @@
-<app-gallery-row *ngFor="let gallery of galleries | paginate: { itemsPerPage: 10, currentPage: p }" [gallery]="gallery"></app-gallery-row>
-
+<app-gallery-row *ngFor="let gallery of galleries | paginate: { itemsPerPage: 10, currentPage: p }" [gallery]="gallery">
+</app-gallery-row>
 <pagination-controls (pageChange)="p = $event"></pagination-controls>
 <router-outlet></router-outlet>

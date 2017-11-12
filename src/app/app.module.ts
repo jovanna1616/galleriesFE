@@ -33,7 +33,7 @@ import { GalleryRowComponent } from './components/gallery-row/gallery-row.compon
     EditGalleryComponent,
     AuthorComponent,
     SingleGalleryComponent,
-    GalleryRowComponent
+    GalleryRowComponent,
   ],
   imports: [
     BrowserModule,

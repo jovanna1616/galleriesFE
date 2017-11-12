@@ -11,13 +11,12 @@ import { User } from './../../shared/models/user';
 })
 export class AllGalleriesComponent implements OnInit {
 	public galleries;
-	public user;
-
+	public users;
+	public images;
   constructor(private auth: AuthService, private galleriesService: GalleriesService) { }
 
   ngOnInit() {
-  	this.galleriesService.getGalleries().subscribe(galleries => {this.galleries = galleries});
-
-  }
+  	this.galleriesService.allData().subscribe(data => {this.galleries = data});
+    }
 
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Gallery } from './../../shared/models/gallery';
+import { User } from './../../shared/models/user';
 import { GalleriesService } from './../../shared/services/galleries.service';
 import 'rxjs/add/operator/map';
 
@@ -9,11 +10,9 @@ import 'rxjs/add/operator/map';
   styleUrls: ['./gallery-row.component.css']
 })
 export class GalleryRowComponent implements OnInit {
-	@Input() gallery: Gallery;
+	@Input() gallery;
   constructor(private galleriesService: GalleriesService) { }
 
   ngOnInit() {
-
   }
-
 }
