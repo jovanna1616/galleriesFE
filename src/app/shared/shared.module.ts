@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
 import { HttpClientModule } from '@angular/common/http';
 import { AuthService } from './services/auth.service';
 
 import { AuthGuard } from './guards/auth.guard';
 import { GuestGuard } from './guards/guest.guard';
+import { GalleriesResolver } from './resolvers/galleries.resolver';
 
 @NgModule({
   imports: [
@@ -16,7 +16,8 @@ import { GuestGuard } from './guards/guest.guard';
   providers: [
     AuthService,
     AuthGuard,
-    GuestGuard
+    GuestGuard,
+    GalleriesResolver
   ]
 })
 export class SharedModule { }

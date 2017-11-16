@@ -1,3 +1,2 @@
-<p>
-  {{ user.firstName }}
-</p>
+<p>Author: {{ gallery.userFirstName }}</p>
+<span *ngFor="let images of gallery.images"><img src="{{ images.link }}" alt="Slides"></span>

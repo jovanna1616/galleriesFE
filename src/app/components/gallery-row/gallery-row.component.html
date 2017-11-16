@@ -1,11 +1,15 @@
 <div class="carousel-inner" role="listbox">
     <div class="carousel-item active">
-		<span>Gallery name: {{ gallery.name }}</span><br>
-		<span>Created at: {{ gallery.createdAt }}</span><br>
-		<span>Author: {{ gallery.userFirstName }}</span>
-		<span> {{ gallery.userLastName }}</span><br>
-		<span *ngFor="let image of gallery.images">
-			<img class="d-block img-fluid" src="{{ image.link}}" alt="First slide">
+		<span>
+			<a [routerLink]="['/all-galleries', gallery.id]" routerLinkActive="active">Gallery name: {{ gallery.name }}</a>
+		</span><br>
+		<span>Created at: {{ gallery.createdAt | date: 'dd-MM-yyyy' }}</span><br>
+		<span>Author: {{ gallery.userFirstName }} {{ gallery.userLastName }}</span><br>
+		<span *ngIf="!gallery.images[0]">
+			No images in gallery.
+		</span>
+		<span *ngIf="gallery.images[0]">
+			<img class="d-block img-fluid" src="{{ gallery.images[0].link }}" alt="First slide">
 		</span>
     </div>
 </div>

@@ -4,8 +4,8 @@ export class Gallery {
 	    public name?: string,
 	    public description?: string,
 	    public userId?: number,
-	    public createdAt?: string,
-	    public updatedAt?: string,
+	    public createdAt?: Date,
+	    public updatedAt?: Date,
 	    public userFirstName?: string,
 	    public userLastName?: string,
 	    public images?: Array<string>

@@ -8,8 +8,12 @@ import { AllGalleriesComponent } from './../components/all-galleries/all-galleri
 import { MyGalleriesComponent } from './../components/my-galleries/my-galleries.component';
 import { CreateNewGalleryComponent } from './../components/create-new-gallery/create-new-gallery.component';
 import { EditGalleryComponent } from './../components/edit-gallery/edit-gallery.component';
+import { SingleGalleryComponent } from './../components/single-gallery/single-gallery.component';
+import { AuthorComponent } from './../components/author/author.component';
+
 import { GuestGuard } from '../shared/guards/guest.guard';
 import { AuthGuard } from '../shared/guards/auth.guard';
+import { GalleriesResolver } from '../shared/resolvers/galleries.resolver';
 
 const appRoutes: Routes = [
   {
@@ -29,12 +33,29 @@ const appRoutes: Routes = [
   },
   {
     path: 'all-galleries',
-    component: AllGalleriesComponent
+    component: AllGalleriesComponent,
   },
   {
-    path: 'my-galleries',
-    canActivate: [AuthGuard],
-    component: MyGalleriesComponent
+    path: 'all-galleries/:id',
+    component: SingleGalleryComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'single-gallery',
+        pathMatch: 'full'
+      }
+    ]
+  },
+  {
+    path: 'authors/:id',
+    component: AuthorComponent,
+    children: [
+      {
+        path: '',
+        redirectTo: 'author',
+        pathMatch: 'full'
+      }
+    ]
   },
   {
     path: 'create-new-gallery',

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, EventEmitter, Output } from '@angular/core';
 import { AuthService } from './../../shared/services/auth.service';
 
 @Component({
@@ -7,9 +7,11 @@ import { AuthService } from './../../shared/services/auth.service';
   styleUrls: ['./create-new-gallery.component.css']
 })
 export class CreateNewGalleryComponent implements OnInit {
+	
 
   constructor(private auth: AuthService) { }
 
+  
   ngOnInit() {
   }
 

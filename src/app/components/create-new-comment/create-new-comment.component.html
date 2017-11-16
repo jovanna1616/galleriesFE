@@ -1,0 +1,16 @@
+<form #commentForm="ngForm" (ngSubmit)="submitComment(newComment); commentForm.reset()">
+    <div class="form-group">
+  		<input 
+	  	 	name="text" 
+	  	 	#comment="ngModel" 
+	  	 	[(ngModel)]="newComment.text" 
+	  	 	type="text"
+	  	 	class="form-control"
+	  	 	maxlength="1000">
+  		
+  		<div *ngIf="comment.errors.maxlength">
+        	<div class="alert alert-danger">Comment shouldn't be more than 1000 characters long.</div>
+      </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Publish</button>
+</form>

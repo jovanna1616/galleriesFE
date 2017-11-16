@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { AuthService } from './../../shared/services/auth.service';
 import { GalleriesService } from './../../shared/services/galleries.service';
 import { Gallery } from './../../shared/models/gallery';
-import { User } from './../../shared/models/user';
 
 @Component({
   selector: 'app-all-galleries',
@@ -11,8 +10,7 @@ import { User } from './../../shared/models/user';
 })
 export class AllGalleriesComponent implements OnInit {
 	public galleries;
-	public users;
-	public images;
+
   constructor(private auth: AuthService, private galleriesService: GalleriesService) { }
 
   ngOnInit() {

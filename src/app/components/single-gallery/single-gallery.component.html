@@ -1,3 +1,16 @@
-<p>
-  single-gallery works!
-</p>
+<div class="carousel-inner" role="listbox">
+    <div class="carousel-item active" *ngIf="gallery">
+		<span>Gallery name: {{ gallery.name }}</span><br>
+		<span>Created at: {{ gallery.createdAt | date: 'dd-MM-yyyy' }}</span><br>
+		<span>
+			<a [routerLink]="['/authors', id]" routerLinkActive="active">
+				Author: {{ gallery.userFirstName }} {{ gallery.userLastName }}
+			</a>
+		</span><br>
+		<span *ngFor="let images of gallery.images"><img src="{{ images.link }}" alt="Slides"></span>
+		<span *ngFor="let comment of gallery.comments">{{ comment }}</span>
+	</div>
+</div>
+<hr>
+<app-create-new-comment #commentForm (onSubmit)="submitComment($event)"></app-create-new-comment>
+<router-outlet></router-outlet>
